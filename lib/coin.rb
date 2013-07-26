@@ -37,7 +37,7 @@ class Price1000 < CoinBase
 end
 
 class CoinFactory
-  def self.Coins(coin_prices)
+  def self.coins(coin_prices)
     coins = []
     for price in coin_prices
 
@@ -45,7 +45,7 @@ class CoinFactory
     coins
   end
 
-  def self.Coin(price)
+  def self.coin(price)
     coin = nil
     case price
     when 10 then

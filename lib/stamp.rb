@@ -17,3 +17,4 @@ class Stamp80 < WorthBase
     super(80)
   end
 end
+
