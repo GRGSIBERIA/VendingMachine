@@ -35,3 +35,4 @@ class Price1000 < CoinBase
     super(1000)
   end
 end
+
