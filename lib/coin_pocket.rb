@@ -1,24 +1,23 @@
 require "./lib/price_counter.rb"
+require "./lib/coin_changer.rb"
+require "./lib/stamp.rb"
 
 class CoinPocket
   def initialize
-    @coins = Hash.new
     @counter = PriceCounter.new
   end
 
   def insert(coin)
-    @coins[coin.price] ||= Array.new
-    @coins[coin.price] << coin
     @counter.insert(coin)
   end
 
   def refund
-    buffer = @coins
-    @coins = []
-    return buffer
+    coins = ChangeCoin(@counter.price)
+    @counter.refund
+    return coins
   end
 
-  def buy(stamp_price, coin_depot, stump_depot)
+  def buy(stamp_price)
     coin_array = @coins.to_a
     coin_array.sort!{|x, y| x <=> y}.reverse!
 
@@ -31,18 +30,5 @@ class CoinPocket
     StampFactory.stamp(stamp_price)
   end
 
-  def ChangeCoin(surplus)
-    prices = [500, 100, 50, 10]
-    price_index = 0
-    coins = []
-    while price_index < 4
-      if surplus - prices[price_index] > 0
-        coins << CoinFactory.coin(prices[price_index])
-        surplus -= prices[price_index]
-        redo
-      end
-      price_index += 1
-    end
-    coins
-  end
+
 end
