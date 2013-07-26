@@ -1,8 +1,7 @@
 require "./lib/coin.rb"
 
 class CoinDepot
-  def initialize(prices_of_coin)
-    coins = CoinFactory.coins(prices_of_coin)
+  def initialize(coins)
     @coins = Hash.new
     for coin in coins
       @coins[coin.price] ||= Array.new
