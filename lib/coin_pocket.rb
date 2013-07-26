@@ -12,7 +12,7 @@ class CoinPocket
   end
 
   def refund
-    coins = ChangeCoin(@counter.price)
+    coins = Changer.change(@counter.price)
     @counter.refund
     return coins
   end
@@ -22,13 +22,11 @@ class CoinPocket
     coin_array.sort!{|x, y| x <=> y}.reverse!
 
     if @counter.price > stamp_price then
-      coins = ChangeCoin(@counter.price - stamp_price)
+      coins = Changer.change(@counter.price - stamp_price)
       @counter.substitute(stamp_price)
     else
       raise "You can not buy stamp of price #{stamp_price}."
     end
     StampFactory.stamp(stamp_price)
   end
-
-
 end
