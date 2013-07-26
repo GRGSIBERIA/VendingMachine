@@ -1,10 +1,14 @@
 require "./lib/price_counter.rb"
-require "./lib/coin_changer.rb"
+require "./lib/changer.rb"
 require "./lib/stamp.rb"
 
 class CoinPocket
   def initialize
     @counter = PriceCounter.new
+  end
+
+  def check
+    @counter.price
   end
 
   def insert(coin)

@@ -8,15 +8,27 @@ class VendingMachine
   end
 
   def insert(coin_price)
-    coin = CoinFactory.coin(coin_price)
-    @pocket.insert(coin)
+    begin
+      coin = CoinFactory.coin(coin_price)
+      @pocket.insert(coin)
+    rescue => error_msg
+      puts error_msg
+    end
   end
 
   def buy(stamp_price)
-    @pocket.buy(stamp_price)
+    begin
+      return @pocket.buy(stamp_price)
+    rescue => error_msg
+      puts error_msg
+    end
   end
 
   def refund
     @pocket.refund
+  end
+
+  def check
+    @pocket.check
   end
 end

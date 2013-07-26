@@ -37,14 +37,6 @@ class Price1000 < CoinBase
 end
 
 class CoinFactory
-  def self.coins(coin_prices)
-    coins = []
-    for price in coin_prices
-
-    end
-    coins
-  end
-
   def self.coin(price)
     case price
     when 10 then
