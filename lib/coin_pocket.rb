@@ -1,0 +1,3 @@
+class CoinPocket
+
+end
