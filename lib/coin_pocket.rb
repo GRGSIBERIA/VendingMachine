@@ -22,7 +22,7 @@ class CoinPocket
   end
 
   def buy(stamp_price)
-    if @counter.price > stamp_price then
+    if @counter.price >= stamp_price then
       coins = Changer.change(@counter.price - stamp_price)
       @counter.substitute(stamp_price)
     else
