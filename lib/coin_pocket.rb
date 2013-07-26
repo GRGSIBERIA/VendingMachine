@@ -18,9 +18,6 @@ class CoinPocket
   end
 
   def buy(stamp_price)
-    coin_array = @coins.to_a
-    coin_array.sort!{|x, y| x <=> y}.reverse!
-
     if @counter.price > stamp_price then
       coins = Changer.change(@counter.price - stamp_price)
       @counter.substitute(stamp_price)
