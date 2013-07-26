@@ -22,13 +22,13 @@ class CoinPocket
     coin_array = @coins.to_a
     coin_array.sort!{|x, y| x <=> y}.reverse!
 
-    coins = []
     if @counter.price > stamp_price then
       coins = ChangeCoin(@counter.price - stamp_price)
+      @counter.substitute(stamp_price)
     else
       raise "You can not buy stamp of price #{stamp_price}."
     end
-    coins
+    StampFactory.stamp(stamp_price)
   end
 
   def ChangeCoin(surplus)

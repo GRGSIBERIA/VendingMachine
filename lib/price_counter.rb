@@ -7,6 +7,10 @@ class PriceCounter
     @price += coin.price
   end
 
+  def substitute(price)
+    @price -= price
+  end
+
   def refund
     @price = 0
   end
