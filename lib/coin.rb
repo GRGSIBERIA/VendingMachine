@@ -1,9 +1,9 @@
-class CoinBase
-  def initialize(price)
-    @price = price
-  end
+require "./lib/worth.rb"
 
-  attr_reader :price
+class CoinBase < WorthBase
+  def initialize(price)
+    super(price)
+  end
 end
 
 class Price10 < CoinBase
