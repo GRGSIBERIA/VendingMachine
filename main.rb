@@ -7,23 +7,26 @@ while line = STDIN.gets
   array = line.split(" ")
   puts "inserted price: #{m.check}"
   
-  case array[0]
-  when "quit"
-    puts "quit vending machine"
-    break
-  when "insert"
-    coin = m.insert(array[1].to_i)
-    puts "insert coin: #{coin.price}"
-  when "refund"
-    coins = m.refund
-    puts "refund coins"
-    for coin in coins
-      puts "coin: #{coin.price}"
+  begin
+    case array[0]
+    when "quit"
+      puts "quit vending machine"
+      break
+    when "insert"
+      coin = m.insert(array[1].to_i)
+      puts "insert coin: #{coin.price}"
+    when "refund"
+      coins = m.refund
+      puts "refund coins"
+      for coin in coins
+        puts "coin: #{coin.price}"
+      end
+    when "buy"
+      stamp = m.buy(array[1].to_i)
+      stamps << stamp
+      puts "bought stamp: #{stamp.price}" 
     end
-  when "buy"
-    stamp = m.buy(array[1].to_i)
-    stamps << stamp
-    puts "bought stamp: #{stamp.price}" 
+  rescue 
   end
 end
 
