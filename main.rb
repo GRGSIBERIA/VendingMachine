@@ -3,10 +3,10 @@ require './lib/vending_machine.rb'
 m = VendingMachine.new
 stamps = []
 
+puts "inserted price: #{m.check}"
 while line = STDIN.gets
   array = line.split(" ")
-  puts "inserted price: #{m.check}"
-  
+
   begin
     case array[0]
     when "quit"
@@ -28,8 +28,11 @@ while line = STDIN.gets
     end
   rescue 
   end
+  puts "inserted price: #{m.check}"
 end
 
 for stamp in stamps
-  puts "bought: #{stamp.price}"
+  if stamp != nil then
+    puts "bought: #{stamp.price}"
+  end
 end
