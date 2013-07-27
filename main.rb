@@ -1,22 +1,32 @@
 require './lib/vending_machine.rb'
 
 m = VendingMachine.new
-m.insert(10)
-m.insert(100)
-m.insert(10)
-m.insert(10)
-m.insert(1000)
-puts "inserted: #{m.check}"
-
 stamps = []
-stamps << m.buy(80)
-stamps << m.buy(80)
+
+while line = STDIN.gets
+  array = line.split(" ")
+  puts "inserted price: #{m.check}"
+  
+  case array[0]
+  when "quit"
+    puts "quit vending machine"
+    break
+  when "insert"
+    coin = m.insert(array[1].to_i)
+    puts "insert coin: #{coin.price}"
+  when "refund"
+    coins = m.refund
+    puts "refund coins"
+    for coin in coins
+      puts "coin: #{coin.price}"
+    end
+  when "buy"
+    stamp = m.buy(array[1].to_i)
+    stamps << stamp
+    puts "bought stamp: #{stamp.price}" 
+  end
+end
+
 for stamp in stamps
   puts "bought: #{stamp.price}"
 end
-
-coins = m.refund
-for coin in coins
-  puts "coin: #{coin.price}"
-end
-puts "refund total: #{coins.inject(0) {|sum, i| sum += i.price}}"

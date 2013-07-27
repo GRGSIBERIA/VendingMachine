@@ -5,6 +5,7 @@ class PriceCounter
 
   def insert(coin)
     @price += coin.price
+    coin
   end
 
   def substitute(price)

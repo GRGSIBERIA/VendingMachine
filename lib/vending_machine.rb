@@ -10,7 +10,7 @@ class VendingMachine
   def insert(coin_price)
     begin
       coin = CoinFactory.coin(coin_price)
-      @pocket.insert(coin)
+      return @pocket.insert(coin)
     rescue => error_msg
       puts error_msg
     end
