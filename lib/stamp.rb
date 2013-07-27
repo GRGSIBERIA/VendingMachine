@@ -27,7 +27,7 @@ class StampFactory
     when 80
       return Stamp80.new
     else
-      raise "You need price #{price} stamp is not exists."
+      raise "You can't buy stamp of price #{price} that is not exists."
     end
   end
 end

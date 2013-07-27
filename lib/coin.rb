@@ -50,7 +50,7 @@ class CoinFactory
     when 1000 then
       return Price1000.new
     else
-      raise "You need price #{price} coin is not uses."
+      raise "You can't insert coin of price #{price} that is not exists."
     end
   end
 end

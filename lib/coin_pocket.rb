@@ -26,7 +26,7 @@ class CoinPocket
       coins = Changer.change(@counter.price - stamp_price)
       @counter.substitute(stamp_price)
     else
-      raise "You can not buy stamp of price #{stamp_price}."
+      raise "You can't buy stamp of price #{stamp_price}."
     end
     StampFactory.stamp(stamp_price)
   end
